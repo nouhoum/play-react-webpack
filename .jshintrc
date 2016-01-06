@@ -1,0 +1,5 @@
+{
+  "-W099": true, // allowed mixed tabs and spaces
+  "-W030": true, // allowed mixed tabs and spaces
+  "asi": true // allowed mixed tabs and spaces
+}
