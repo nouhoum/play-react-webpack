@@ -3,7 +3,7 @@ Play framework, ReactJs and webpack
 
 This is a simple project to illustrate how to setup playframework to work with react js, es6 and webpack
 
-Just checkout the project and do ```npm install```to install all dependencies.
+Just checkout the project and do ```npm install```to install all dependencies or rebuild it step by step by following instructions below.
 
 # Initialize npm project
 
