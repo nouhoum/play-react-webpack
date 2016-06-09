@@ -1,4 +1,4 @@
-lazy val webpack = taskKey[Unit]("Run webpack when packaging the application")
+lazy val webpack = TaskKey[Unit]("Run webpack when packaging the application")
 
 def runWebpack(file: File) = {
   Process("webpack", file) !
@@ -11,3 +11,5 @@ webpack := {
 dist <<= dist dependsOn webpack
 
 stage <<= stage dependsOn webpack
+
+test <<= (test in Test) dependsOn webpack
