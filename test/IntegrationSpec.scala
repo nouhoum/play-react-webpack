@@ -1,9 +1,10 @@
+import org.openqa.selenium.phantomjs.PhantomJSDriver
+import org.openqa.selenium.remote.DesiredCapabilities
 import org.specs2.mutable._
 import org.specs2.runner._
 import org.junit.runner._
 
 import play.api.test._
-import play.api.test.Helpers._
 
 /**
  * add your integration spec here.
@@ -16,9 +17,15 @@ class IntegrationSpec extends Specification {
 
     "work from within a browser" in new WithBrowser {
 
+      override val webDriver = {
+        val capabilities = new DesiredCapabilities()
+        capabilities.setJavascriptEnabled(true)
+        new PhantomJSDriver(capabilities)
+      }
+
       browser.goTo("http://localhost:" + port)
 
-      browser.pageSource must contain("Your new application is ready.")
+      browser.pageSource must contain("Ninja")
     }
   }
 }

@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
   jdbc,
   cache,
   ws,
-  specs2 % Test
+  specs2 % Test,
+  "com.codeborne" % "phantomjsdriver" % "1.2.1"
 )
 
 playRunHooks <+= baseDirectory.map(Webpack.apply)
@@ -20,6 +21,12 @@ playRunHooks <+= baseDirectory.map(Webpack.apply)
 routesGenerator := InjectedRoutesGenerator
 
 excludeFilter in (Assets, JshintKeys.jshint) := "*.js"
+
+watchSources ~= { (ws: Seq[File]) =>
+  ws filterNot { path =>
+    path.getName.endsWith(".js") || path.getName == ("build")
+  }
+}
 
 pipelineStages := Seq(digest, gzip)
 
