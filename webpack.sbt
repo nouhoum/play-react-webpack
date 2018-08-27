@@ -8,8 +8,8 @@ webpack := {
   if(runWebpack(baseDirectory.value) != 0) throw new Exception("Something goes wrong when running webpack.")
 }
 
-dist <<= dist dependsOn webpack
+dist := { (dist dependsOn webpack).value }
 
-stage <<= stage dependsOn webpack
+stage := { (stage dependsOn webpack).value }
 
-test <<= (test in Test) dependsOn webpack
+test := { ((test in Test) dependsOn webpack).value }
