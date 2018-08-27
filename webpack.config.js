@@ -13,29 +13,29 @@ var config = {
     },
     resolve: {
         alias: {},
-        root: srcPath,
-        extensions: ['', '.js'],
-        modulesDirectories: ['node_modules', jsPath]
+        //root: srcPath,
+        //extensions: ['', '.js']
+        //modulesDirectories: ['node_modules', jsPath]
     },
     output: {
         path:path.resolve(__dirname, jsPath, 'build'),
         publicPath: '',
-        filename: '[name].js',
-        pathInfo: true
+        filename: '[name].js'
+        //pathInfo: true
     },
 
     module: {
-        noParse: [],
+        //noParse: [],
         loaders: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel'
+                loader: 'babel-loader'
             },
             {
                 test: /\.scss$/,
                 include: /\/app\/assets/,
-                loader: 'style!css!sass'
+                loader: 'style-loader!css-loader!sass-loader'
             }
         ]
     },
